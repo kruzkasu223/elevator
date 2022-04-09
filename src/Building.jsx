@@ -31,11 +31,19 @@ export const Building = () => {
       {building.reverse().map((floor) => (
         <div className="floor">
 
-          <div className={floor.isElevatorThere ? "elevator-door active" : "elevator-door"}></div>
+          <div className={floor.isElevatorThere ? "elevator-door active" : "elevator-door"}>
+            {floor.isElevatorThere &&
+              <div className="btn-wrap-ele">
+                {building.map(f => (
+                  <button className={f.isElevatorThere ? "btn btn-ele active" : "btn btn-ele"}>{f.id}</button>
+                ))}
+              </div>
+            }
+          </div>
 
           <div className="btn-wrap">
-            <button className="btn btn-up">&uarr;</button>
-            <button className="btn btn-down">&darr;</button>
+            <button className={floor.id === 2 ? "btn active" : "btn"}>&uarr;</button>
+            <button className="btn">&darr;</button>
           </div>
 
         </div>
